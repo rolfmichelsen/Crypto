@@ -20,6 +20,7 @@ class App extends React.Component {
 
         this.handleCiphertextChange = this.handleCiphertextChange.bind(this);
         this.handleCipherAlphabetChange = this.handleCipherAlphabetChange.bind(this);
+        this.handleCipherKeyChange = this.handleCipherKeyChange.bind(this);
     }
 
 
@@ -39,6 +40,14 @@ class App extends React.Component {
     }
 
 
+    handleCipherKeyChange(cipherkey) {
+        this.setState((state) => {
+            state.cipher.cipherkey = cipherkey;
+            return ({cipher: state.cipher});
+        });
+    }
+
+
     render() {
         const cipher = this.state.cipher;
         return (
@@ -48,7 +57,7 @@ class App extends React.Component {
                     <TextInput className="leftMessage" caption="Ciphertext" value={cipher.ciphertext} onTextChange={this.handleCiphertextChange} />
                     <TextOutput className="rightMessage" caption="Plaintext" value={cipher.plaintext} />
                 </div>
-                <CaesarSolver ciphertext={cipher.ciphertext} alphabet={cipher.alphabet} cipherkey={cipher.cipherkey} onAlphabetChange={this.handleCipherAlphabetChange} />
+                <CaesarSolver ciphertext={cipher.ciphertext} alphabet={cipher.alphabet} cipherkey={cipher.cipherkey} onAlphabetChange={this.handleCipherAlphabetChange} onKeyChange={this.handleCipherKeyChange} />
             </div>
         );
     }

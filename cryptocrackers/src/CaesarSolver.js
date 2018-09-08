@@ -1,3 +1,5 @@
+"use strict";
+
 import React from "react";
 import PropTypes from "prop-types";
 import CaesarCipher from "./CaesarCipher";
@@ -24,7 +26,7 @@ class CaesarSolver extends React.Component {
         for (let cipherkey=0; cipherkey<this.props.alphabet.length; cipherkey++) {
             cipher.cipherkey = cipherkey;
             solutions.push(
-                <CaesarSolverRow cipherkey={cipherkey} selected={this.props.cipherkey === cipherkey} solution={cipher.plaintext} />
+                <CaesarSolverRow cipherkey={cipherkey} selected={this.props.cipherkey === cipherkey} solution={cipher.plaintext} onKeyChange={this.props.onKeyChange} />
             );
         }
         return(
@@ -45,11 +47,17 @@ class CaesarSolver extends React.Component {
 
 class CaesarSolverRow  extends React.Component {
 
+
+    handleKeySelected(event, key) {
+        this.props.onKeyChange(key);
+    }
+
+
     render() {
         return(
             <div>
                 <span>{this.props.cipherkey}</span>
-                <span><input type="radio" checked={this.props.selected} /></span>
+                <span><input type="radio" checked={this.props.selected} onChange={(e) => this.handleKeySelected(e, this.props.cipherkey)} /></span>
                 <span>{this.props.solution}</span>
             </div>
         );
@@ -64,6 +72,7 @@ CaesarSolver.propTypes = {
     alphabet: PropTypes.string,         // The alphabet to use
     cipherkey: PropTypes.number,        // The key, shift offset in alphabet
     onAlphabetChange: PropTypes.func,   // Callback for cipher alphabet change
+    onKeyChange: PropTypes.func,        // Callback for cipher key change
 };
 
 
@@ -71,6 +80,7 @@ CaesarSolverRow.propTypes = {
     solution: PropTypes.string,         // The ciphertext to solve for
     cipherkey: PropTypes.number,        // The key, shift offset in alphabet
     selected: PropTypes.bool,           // Is this the selected solution
+    onKeyChange: PropTypes.func,        // Callback for cipher key change
 };
 
 
