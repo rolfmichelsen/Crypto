@@ -12,6 +12,7 @@ describe("Caesar cipher", () => {
         const cipher = new CaesarCipher();
         cipher.ciphertext = ciphertext;
         cipher.alphabet = alphabet;
+        cipher.ignoreCase = false;
         const plaintext = cipher.plaintext;
 
         expect(plaintext).toBe(ciphertext);
@@ -46,7 +47,7 @@ describe("Caesar cipher", () => {
 
 
     test("Decrypt with partial alphabet coverage", () => {
-        const ciphertext = "abcABCdef";
+        const ciphertext = "abc[+]def";
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
         const cipher = new CaesarCipher();
@@ -54,7 +55,7 @@ describe("Caesar cipher", () => {
         cipher.alphabet = alphabet;
         const plaintext = cipher.plaintext;
 
-        expect(plaintext).toBe("xyzABCabc");
+        expect(plaintext).toBe("xyz[+]abc");
     });
 
 });
