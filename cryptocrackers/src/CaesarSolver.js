@@ -1,15 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
+import CaesarCipher from "./CaesarCipher";
 
 
 class CaesarSolver extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.handleAlphabetChange = this.handleAlphabetChange.bind(this);
+    }
+
+
+    handleAlphabetChange(event) {
+        this.props.onAlphabetChange(event.target.value);
+    }
+
 
     render() {
         let solutions = [];
-        for (let i=0; i<this.props.alphabet.length; i++) {
+        const cipher = new CaesarCipher();
+        cipher.ciphertext = this.props.ciphertext;
+        cipher.alphabet = this.props.alphabet;
+        for (let cipherkey=0; cipherkey<this.props.alphabet.length; cipherkey++) {
+            cipher.cipherkey = cipherkey;
             solutions.push(
-                <CaesarSolverRow cipherkey={i} selected={false} solution={this.props.ciphertext} />
+                <CaesarSolverRow cipherkey={cipherkey} selected={this.props.cipherkey === cipherkey} solution={cipher.plaintext} />
             );
         }
         return(
@@ -17,7 +32,7 @@ class CaesarSolver extends React.Component {
                 <legend>Caesar solver</legend>
                 <div>
                     <label htmlFor="alphabet">Alphabet: </label>
-                    <input name="alphabet" value={this.props.alphabet} />
+                    <input name="alphabet" value={this.props.alphabet} onChange={this.handleAlphabetChange} />
                     <span>  {this.props.alphabet.length} characters</span>
                 </div>
                 {solutions}
@@ -48,6 +63,7 @@ CaesarSolver.propTypes = {
     ciphertext: PropTypes.string,       // The ciphertext to solve for
     alphabet: PropTypes.string,         // The alphabet to use
     cipherkey: PropTypes.number,        // The key, shift offset in alphabet
+    onAlphabetChange: PropTypes.func,   // Callback for cipher alphabet change
 };
 
 
