@@ -1,0 +1,21 @@
+.caesarKeyTable {
+    width: 100%;
+    table-layout: fixed;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.caesarKey {
+    width: 3em;
+    text-align: right;
+}
+
+.caesarKeySelect {
+    width: 3em;
+    text-align: center;
+}
+
+.caesarPlaintext {
+    text-align: left;
+}

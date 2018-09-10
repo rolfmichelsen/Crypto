@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./TextInput.css";
 
 
 class TextInput extends React.Component {
@@ -20,7 +21,7 @@ class TextInput extends React.Component {
             <form>
                 <fieldset>
                     <legend>{this.props.caption}</legend>
-                    <textarea value={this.props.value} onChange={this.handleChange} />
+                    <textarea className="inputText" rows={5} value={this.props.value} onChange={this.handleChange} />
                     <p>Characters: {this.props.value.length}</p>
                 </fieldset>
             </form>

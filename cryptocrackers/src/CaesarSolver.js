@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CaesarCipher from "./CaesarCipher";
+import "./CaesarSolver.css";
 
 
 class CaesarSolver extends React.Component {
@@ -35,7 +36,18 @@ class CaesarSolver extends React.Component {
                     <input name="alphabet" value={this.props.alphabet} onChange={this.handleAlphabetChange} />
                     <span>  {this.props.alphabet.length} characters</span>
                 </div>
-                {solutions}
+                <table className="caesarKeyTable">
+                    <thead>
+                        <tr  className="caesarKeyRow">
+                            <th className="caesarKey">Key</th>
+                            <th className="caesarKeySelect">Sel</th>
+                            <th className="caesarPlaintext">Plaintext excerpt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {solutions}
+                    </tbody>
+                </table>
             </fieldset>
         );
     }
@@ -53,11 +65,11 @@ class CaesarSolverRow  extends React.Component {
 
     render() {
         return(
-            <div>
-                <span>{this.props.cipherkey}</span>
-                <span><input type="radio" checked={this.props.selected} onChange={(e) => this.handleKeySelected(e, this.props.cipherkey)} /></span>
-                <span>{this.props.solution}</span>
-            </div>
+            <tr className="caesarKeyRow">
+                <td className="caesarKey">{this.props.cipherkey}</td>
+                <td className="caesarKeySelect"><input type="radio" checked={this.props.selected} onChange={(e) => this.handleKeySelected(e, this.props.cipherkey)} /></td>
+                <td className="caesarPlaintext">{this.props.solution}</td>
+            </tr>
         );
     }
 
