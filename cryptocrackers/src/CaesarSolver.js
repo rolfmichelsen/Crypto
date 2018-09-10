@@ -1,5 +1,3 @@
-"use strict";
-
 import React from "react";
 import PropTypes from "prop-types";
 import CaesarCipher from "./CaesarCipher";
@@ -26,7 +24,7 @@ class CaesarSolver extends React.Component {
         for (let cipherkey=0; cipherkey<this.props.alphabet.length; cipherkey++) {
             cipher.cipherkey = cipherkey;
             solutions.push(
-                <CaesarSolverRow cipherkey={cipherkey} selected={this.props.cipherkey === cipherkey} solution={cipher.plaintext} onKeyChange={this.props.onKeyChange} />
+                <CaesarSolverRow key={cipherkey} cipherkey={cipherkey} selected={this.props.cipherkey === cipherkey} solution={cipher.plaintext} onKeyChange={this.props.onKeyChange} />
             );
         }
         return(
