@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import Caesar from "./Caesar";
-import Home from "./Home";
+import Substitution from "./Substitution";
 import "./App.css";
 
 
@@ -17,15 +17,13 @@ class App extends React.Component {
                         <h1 className="apptitle">CryptoCrackers</h1>
                         <div className="appmenu">
                             <ul>
-                                <li><Link to="/">Home</Link></li>
                                 <li><Link to="/caesar">Caesar</Link></li>
-                                <li><Link to="/home">Second home</Link></li>
+                                <li><Link to="/substitution">Substitution</Link></li>
                             </ul>
                         </div>
                     </div>
-                    <Route exact path="/" Component={Home} />
                     <Route path="/caesar" component={Caesar} />
-                    <Route path="/home" component={Home} />
+                    <Route path="/substitution" component={Substitution} />
                 </div>
             </Router>
         );
