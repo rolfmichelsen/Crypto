@@ -13,11 +13,16 @@ class App extends React.Component {
         return (
             <Router>
                 <div>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/caesar">Caesar</Link></li>
-                        <li><Link to="/home">Second home</Link></li>
-                    </ul>
+                    <div className="appheader">
+                        <h1 className="apptitle">CryptoCrackers</h1>
+                        <div className="appmenu">
+                            <ul>
+                                <li><Link to="/">Home</Link></li>
+                                <li><Link to="/caesar">Caesar</Link></li>
+                                <li><Link to="/home">Second home</Link></li>
+                            </ul>
+                        </div>
+                    </div>
                     <Route exact path="/" Component={Home} />
                     <Route path="/caesar" component={Caesar} />
                     <Route path="/home" component={Home} />

@@ -1,0 +1,28 @@
+.appheader {
+    background-color: black;
+    color: white;
+    padding: 1em;
+    border: 0;
+    margin: 0;
+}
+
+.appmenu ul {
+    width: 100%;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.appmenu ul li {
+    display: inline-block;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0;
+    padding-right: 2em;
+    font-weight: bolder;
+    font-size: 150%;
+}
+
+.appmenu a:any-link {
+    color: white;
+    text-decoration: none;
+}
