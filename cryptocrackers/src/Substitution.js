@@ -48,7 +48,7 @@ class Substitution extends React.Component {
         return (
             <CipherSolver
                 cipherName="Substition cipher"
-                cipherText={<p>bla bla bla...</p>}
+                cipherText={Substitution.cipherText}
                 cipherSolver={<SubstitutionSolver cipher={this.state.cipher} onCipherKeyChange={this.handleCipherkeyChange} />}
                 cipher={this.state.cipher}
                 onCiphertextChange={this.handleCiphertextChange} />
@@ -56,6 +56,16 @@ class Substitution extends React.Component {
     }
 }
 
+
+Substitution.cipherText =
+    <div>
+        <p>Substitution ciphers are among the simplest ciphers. The cipher key is a table mapping characters from the plaintext
+            alphabet to characters of the ciphertext alphabet, e.g. &#34;a&#34; becomes &#34;x&#34;, &#34;b&#34; becomes &#34;w&#34;
+            etc.</p>
+        <p>These ciphers can usually be broken relatively simply by observing that not all characters occur with similar frequency
+            in normal text, e.g. &#34;e&#34; is significantly more common than &#34;x&#34; in English text.  By doing a simple
+            frequency analysis of the ciphertext it is possible to start reconstructing the key.</p>
+    </div>;
 
 export default Substitution;
 
@@ -72,6 +82,7 @@ class SubstitutionSolver extends React.Component {
     countCharacterOccurrences(text) {
         const occ = {};
         for (let ch of text) {
+            ch = ch.toLowerCase();
             let count = (ch in occ) ? occ[ch]+1 : 1;
             occ[ch] = count;
         }
@@ -81,9 +92,8 @@ class SubstitutionSolver extends React.Component {
 
     handleKeyChange(event, char) {
         const key = this.props.cipher.key;
-        key[event.target.value] = char;
+        key[char] = event.target.value;
         this.props.onCipherKeyChange(key);
-        console.log("New key mapping: " + char + " -> " + event.target.value)
     }
 
 

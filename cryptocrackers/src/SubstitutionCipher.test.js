@@ -22,4 +22,15 @@ describe("Substitution cipher", () => {
         expect(plaintext).toBe("hello world!");
     });
 
+
+    test("Default to normalizing to lowercase", () => {
+        const ciphertext = "abCcd eDfcg!";
+        const key = {a:"h", b:"e", c:"l", d:"o", e:"w", f:"r", g:"d"};
+        const cipher = new SubstitutionCipher();
+        cipher.key = key;
+        cipher.ciphertext = ciphertext;
+        const plaintext = cipher.plaintext;
+        expect(plaintext).toBe("hello world!");
+    });
+
 });

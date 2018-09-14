@@ -18,7 +18,8 @@ class SubstitutionCipher extends Cipher {
 
     _decrypt(ciphertext) {
         let plaintext = "";
-        for (const c of ciphertext) {
+        for (let c of ciphertext) {
+            c = c.toLowerCase();
             let p = c in this._key ? this._key[c] : c;
             plaintext += p;
         }

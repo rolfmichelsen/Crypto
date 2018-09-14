@@ -9,7 +9,7 @@ class Cipher {
     }
 
 
-    _decrypt() { throw "Calling abstract function"; }
+    _decrypt() { throw String("Calling abstract function"); }
 
     get ciphertext() { return this._ciphertext; }
     set ciphertext(text) { this._ciphertext = text; }

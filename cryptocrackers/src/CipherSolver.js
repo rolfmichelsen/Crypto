@@ -11,7 +11,7 @@ class CipherSolver extends React.Component {
         return (
             <div>
                 <h1>{this.props.cipherName}</h1>
-                <p>bla bla bla...</p>
+                {this.props.cipherText}
                 <TextInput caption="Ciphertext" value={this.props.cipher.ciphertext} onTextChange={this.props.onCiphertextChange} />
                 <TextOutput caption="Plaintext" value={this.props.cipher.plaintext} />
                 <fieldset>
