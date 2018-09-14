@@ -1,30 +1,29 @@
+import Cipher from "./Cipher";
+
 /*
     Implementation of a Caesar cipher.
 */
-class CaesarCipher {
+class CaesarCipher extends Cipher {
 
     constructor() {
-        this.ciphertext = "";
+        super();
         this.alphabet = "abcdefghijklmnopqrstuvwxyz";
-        this.cipherkey = 3;
+        this.key = 3;
         this.ignoreCase = true;
     }
 
-    get plaintext() { return this._decrypt(); }
+    get plaintext() { return this._decrypt(this.ciphertext); }
 
-
-    _decrypt() {
+    _decrypt(ciphertext) {
         let plaintext = "";
         const alphaLength = this.alphabet.length;
-        for (let c of this.ciphertext) {
+        for (let c of ciphertext) {
             c = this.ignoreCase ? c.toLowerCase() : c;
             const p = this.alphabet.indexOf(c);
-            plaintext += p >= 0 ? this.alphabet[(p - this.cipherkey + alphaLength) % alphaLength] : c;
+            plaintext += p >= 0 ? this.alphabet[(p - this.key + alphaLength) % alphaLength] : c;
         }
         return plaintext;
     }
-
-
 
 }
 

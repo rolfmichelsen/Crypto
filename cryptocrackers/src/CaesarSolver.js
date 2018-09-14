@@ -20,21 +20,20 @@ class CaesarSolver extends React.Component {
     render() {
         let solutions = [];
         const cipher = new CaesarCipher();
-        cipher.ciphertext = this.props.ciphertext;
-        cipher.alphabet = this.props.alphabet;
-        for (let cipherkey=0; cipherkey<this.props.alphabet.length; cipherkey++) {
-            cipher.cipherkey = cipherkey;
+        cipher.ciphertext = this.props.cipher.ciphertext;
+        cipher.alphabet = this.props.cipher.alphabet;
+        for (let cipherkey=0; cipherkey<cipher.alphabet.length; cipherkey++) {
+            cipher.key = cipherkey;
             solutions.push(
-                <CaesarSolverRow key={cipherkey} cipherkey={cipherkey} selected={this.props.cipherkey === cipherkey} solution={cipher.plaintext} onKeyChange={this.props.onKeyChange} />
+                <CaesarSolverRow key={cipherkey} cipherkey={cipherkey} selected={this.props.cipher.key === cipherkey} solution={cipher.plaintext} onKeyChange={this.props.onKeyChange} />
             );
         }
         return(
-            <fieldset>
-                <legend>Caesar solver</legend>
+            <div>
                 <div>
                     <label htmlFor="alphabet">Alphabet: </label>
-                    <input name="alphabet" value={this.props.alphabet} onChange={this.handleAlphabetChange} />
-                    <span>  {this.props.alphabet.length} characters</span>
+                    <input name="alphabet" value={this.props.cipher.alphabet} onChange={this.handleAlphabetChange} />
+                    <span>  {this.props.cipher.alphabet.length} characters</span>
                 </div>
                 <table className="caesarKeyTable">
                     <thead>
@@ -48,7 +47,7 @@ class CaesarSolver extends React.Component {
                         {solutions}
                     </tbody>
                 </table>
-            </fieldset>
+            </div>
         );
     }
 
@@ -78,11 +77,9 @@ class CaesarSolverRow  extends React.Component {
 
 
 CaesarSolver.propTypes = {
-    ciphertext: PropTypes.string,       // The ciphertext to solve for
-    alphabet: PropTypes.string,         // The alphabet to use
-    cipherkey: PropTypes.number,        // The key, shift offset in alphabet
-    onAlphabetChange: PropTypes.func,   // Callback for cipher alphabet change
-    onKeyChange: PropTypes.func,        // Callback for cipher key change
+    cipher: PropTypes.instanceOf(CaesarCipher).isRequired,      // Caesar cipher instance
+    onAlphabetChange: PropTypes.func.isRequired,                // Callback for cipher alphabet change
+    onKeyChange: PropTypes.func.isRequired,                     // Callback for cipher key change
 };
 
 

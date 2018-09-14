@@ -26,7 +26,7 @@ describe("Caesar cipher", () => {
         const cipher = new CaesarCipher();
         cipher.ciphertext = ciphertext;
         cipher.alphabet = alphabet;
-        cipher.cipherkey = 5;
+        cipher.key = 5;
         const plaintext = cipher.plaintext;
 
         expect(plaintext).toBe("vwxyza");
