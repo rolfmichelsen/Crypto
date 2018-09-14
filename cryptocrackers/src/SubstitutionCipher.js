@@ -13,46 +13,20 @@ class SubstitutionCipher extends Cipher {
 
     constructor() {
         super();
-        this._encryptkey = {};
-        this._decryptkey = {};
+        this._key = {};
     }
 
-    _encrypt() {
-        let ciphertext = "";
-        for (const p of this._plaintext) {
-            let c = p in this._encryptkey ? this._encryptkey[p] : p;
-            ciphertext += c;
-        }
-        this._ciphertext = ciphertext;
-    }
-
-
-    _decrypt() {
+    _decrypt(ciphertext) {
         let plaintext = "";
-        for (const c of this._ciphertext) {
-            let p = c in this._decryptkey ? this._decryptkey[c] : c;
+        for (const c of ciphertext) {
+            let p = c in this._key ? this._key[c] : c;
             plaintext += p;
         }
-        this._plaintext = plaintext;
+        return plaintext;
     }
 
-
-    _invertkey(key) {
-        let ikey = {};
-        for (let p in key) {
-            let c = key[p];
-            ikey[c] = p;
-        }
-        return ikey;
-    }
-
-
-    get key() { return this._encryptkey; }
-
-    set key(key) {
-        this._encryptkey = key;
-        this._decryptkey = this._invertkey(key);
-    }
+    get key() { return this._key; }
+    set key(key) { this._key = key; }
 
 }
 
