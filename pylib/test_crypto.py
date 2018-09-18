@@ -21,6 +21,16 @@ class TestCharacterOccurrences(unittest.TestCase):
 
 
 
+class TestNgramOccurrences(unittest.TestCase):
+
+    def test_ngram(self):
+        text = "hello world"
+        order = 2
+        expected = {"he":1, "el":1, "ll":1, "lo":1, "o ":1, " w":1, "wo":1, "or":1, "rl":1, "ld":1}
+        occ = crypto.ngramOccurrences(text, order)
+        self.assertDictEqual(occ, expected)
+
+
 
 class TestTextNormalization(unittest.TestCase):
 

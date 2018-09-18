@@ -21,6 +21,25 @@ def characterOccurrences(text, alphabet=None):
     return occ
 
 
+def ngramOccurrences(text, order):
+
+    if order < 1:
+        raise RuntimeError("Argument order is invalid " + order)
+
+    occ = {}
+    for i in range(len(text)-order+1):
+        ng = text[i:i+order]
+        if ng in occ:
+            occ[ng] += 1
+        else:
+            occ[ng] = 1
+
+    return occ
+
+
+
+
+
 
 def normalize(text, alphabet, repl=" "):
     """
