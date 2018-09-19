@@ -31,6 +31,32 @@ class TestNgramOccurrences(unittest.TestCase):
         self.assertDictEqual(occ, expected)
 
 
+class TestWordOccurrences(unittest.TestCase):
+
+    def test_wordcount(self):
+        text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lacinia ante. Mauris et ultrices nunc, lorem ipsum "
+        occ = crypto.wordOccurrences(text.lower(), "abcdefghijklmnopqrstuvwxyz")
+
+        expected = {"lorem": 2,
+                    "ipsum": 2,
+                    "dolor": 1,
+                    "sit": 1,
+                    "amet": 1,
+                    "consectetur" :1,
+                    "adipiscing" : 1,
+                    "elit": 1,
+                    "sed": 1,
+                    "a": 1,
+                    "lacinia": 1,
+                    "ante": 1,
+                    "mauris": 1,
+                    "et": 1,
+                    "ultrices": 1,
+                    "nunc": 1
+                    }
+
+        self.assertDictEqual(occ, expected)
+
 
 class TestTextNormalization(unittest.TestCase):
 

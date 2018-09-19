@@ -53,6 +53,26 @@ def normalize(text, alphabet, repl=" "):
     return norm
 
 
+def wordOccurrences(text, alphabet):
+    """
+    Returns a word histogram for a string.  The histogram is returned as a dictionary with
+    words as keys and occurrence counts as values.  Any character not in the alphabet denotes
+    a word separating character.
+    """
+
+    occ = {}
+    word = ""
+    for c in text:
+        if c in alphabet:
+            word += c
+        elif len(word) > 0:
+            occ[word] = occ[word]+1 if word in occ else 1
+            word = ""
+        else:
+            pass
+
+    return occ
+
 
 
 
