@@ -16,7 +16,7 @@ def characters(text, alphabet=None, rep=" "):
             yield rep
 
 
-def ngrams(text, order, alphabet=None, rep=" "):
+def ngrams(text, order):
     """
     Returns N-grams (sequences of characters) of a given order from the text.
     """
@@ -26,10 +26,7 @@ def ngrams(text, order, alphabet=None, rep=" "):
 
     ngram = ""
     for c in text:
-        if (not alphabet) or (c in alphabet):
-            ngram += c
-        elif rep:
-            ngram += rep
+        ngram += c
         if len(ngram) == order:
             yield ngram
             ngram = ngram[1:]

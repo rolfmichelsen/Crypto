@@ -43,13 +43,13 @@ class TestNgramIterator(unittest.TestCase):
     def test_withAlphabet(self):
         text = "hello, world!"
         expected = ["he", "el", "ll", "lo", "o ", "  ", " w", "wo", "or", "rl", "ld", "d "]
-        ngrams = list(ta.ngrams(text, 2, english, " "))
+        ngrams = list(ta.ngrams(ta.characters(text, english, " "), 2))
         self.assertEqual(ngrams, expected)
 
     def test_withAlphabetRemove(self):
         text = "hello, world!"
         expected = ["he", "el", "ll", "lo", "ow", "wo", "or", "rl", "ld"]
-        ngrams = list(ta.ngrams(text, 2, english, rep=None))
+        ngrams = list(ta.ngrams(ta.characters(text, english, rep=None), 2))
         self.assertEqual(ngrams, expected)
 
 
