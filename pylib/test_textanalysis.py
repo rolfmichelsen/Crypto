@@ -28,7 +28,11 @@ class TestCharacterIterator(unittest.TestCase):
         chrs = list(ta.characters(text, english, rep=None))
         self.assertEqual(chrs, expected)
 
-
+    def test_withAlphabetRemoveMultiple(self):
+        text = "hello, world"
+        expected = ["h", "e", "l", "l", "o", " ","w", "o", "r", "l", "d"]
+        chrs = list(ta.characters(text, english, doubles=False))
+        self.assertEqual(chrs, expected)
 
 
 class TestNgramIterator(unittest.TestCase):

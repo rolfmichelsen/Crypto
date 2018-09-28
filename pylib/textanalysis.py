@@ -1,19 +1,25 @@
 #!/usr/bin/env python3
 
 
-def characters(text, alphabet=None, rep=" "):
+def characters(text, alphabet=None, rep=" ", doubles=True):
     """
     Generator returning a single character at a time from the text.  Only characters in the
     specified alphabet will be returned.  If a character is not in the alphabet, it is replaced by
     rep in the output.  If no alphabet is given then all characters are returned with no
     translation.  Set rep to None to remove characters not in the dictionary instead of translating them.
+    Set doubles to False to replace multiple non-alphabet characters with only a single replacement
+    character.
     """
 
+    lastrep = False
     for c in text:
         if (not alphabet) or (c in alphabet):
             yield c
-        elif rep:
+        elif rep and (doubles or (not lastrep)):
+            lastrep = True
             yield rep
+        else:
+            lastrep = False
 
 
 def ngrams(text, order):
