@@ -8,5 +8,5 @@ Playing with cryptography, mostly classical ciphers.
 Run tests with...
 
 ```bash
-python -m unittest
+python -m unittest discover --pattern *_test.py
 ```
