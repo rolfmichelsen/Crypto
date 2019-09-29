@@ -10,7 +10,7 @@ def substitute(text, key, keepUndef=False):
     """
     Substitutes an iterable sequrence, symbol by symbol.  key is a dictionary defining the substitution.
     The source alphabet must be represented as dictionary keys, and the corresponding destination
-    symbol is the dictionary valye.  With keepUndef set, source symbols not represented in key will
+    symbol is the dictionary value.  With keepUndef set, source symbols not represented in key will
     be copied to the destination unchanged, otherwise they will be discarded.
     """
 
