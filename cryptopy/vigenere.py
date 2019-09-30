@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+#
+# Implements a Vigenère cipher, a simple poly-alphabetic substitution cipher.
+# https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher for more details.
 
 import sys
 
