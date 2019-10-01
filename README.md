@@ -1,9 +1,25 @@
-# Crypto
+Crypto
+======
 
 Playing with cryptography, mostly classical ciphers.
 
 
-## Python library
+Cryptocrackers
+--------------
+
+Just an experiment with a very simple javascript app for playing with a few classical ciphers.
+
+Run with...
+
+```bash
+npm install
+npm start
+```
+
+
+
+Python library
+--------------
 
 Python modules for working with classical ciphers.
 
