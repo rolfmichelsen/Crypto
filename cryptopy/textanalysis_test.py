@@ -57,6 +57,14 @@ class TestNgramIterator(unittest.TestCase):
         self.assertEqual(ngrams, expected)
 
 
+class TestStatistics(unittest.TestCase):
+
+    def test_characterHistogram(self):
+        samples = ("a", "b", "c", "a", "c", "a")
+        expected = {"a":3, "b":1, "c":2}
+        histogram = ta.histogram(samples)
+        self.assertEqual(histogram, expected)
+
 
 class TestWordIterator(unittest.TestCase):
 

@@ -49,6 +49,24 @@ def ngrams(text, order):
 
 
 
+def histogram(samples):
+    """
+    Returns a histogram of samples.  The input samples are evaluated in list context
+    and is typically the output from many of the other functions in this module.  Returns 
+    a dictionary where the discovered samples are the keys and the occurence count
+    is stored in the corresponding dictionary value.
+    """
+
+    histogram = {}
+    for s in samples:
+        if s in histogram:
+            histogram[s] += 1
+        else:
+            histogram[s] = 1
+    return histogram
+
+
+
 def words(text, alphabet):
     """
     Generator returning words from the text.  Any character not in the specified alphabet is considered
