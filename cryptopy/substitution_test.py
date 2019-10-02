@@ -34,3 +34,10 @@ class TestSubstitution(unittest.TestCase):
         expected = {"a":"d", "b":"e", "c":"f", "d":"a", "e":"b", "f":"c"}
         key = subst.createCaesarKey(alphabet)
         self.assertEqual(key, expected)
+
+    def test_createCaesarKeyNoOffset(self):
+        alphabet = "abcdef"
+        expected = {"a":"a", "b":"b", "c":"c", "d":"d", "e":"e", "f":"f"}
+        key = subst.createCaesarKey(alphabet, 0)
+        self.assertEqual(key, expected)
+        
